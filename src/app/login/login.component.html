@@ -1,0 +1,11 @@
+login
+<form #loginForm="ngForm">
+  <input [(ngModel)]="jsonIn.username" name="username"
+          required/>
+  <br>
+  <input [(ngModel)]="jsonIn.password" name="password"
+        required />
+  <br>
+  <button [disabled]="loginForm.invalid || pending"
+        (click)="login()">Login</button>
+</form>
