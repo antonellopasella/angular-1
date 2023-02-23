@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from './_service/api.service';
 import { MeterComponent } from './meter/meter.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MeterComponent } from './meter/meter.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     BlockUIModule.forRoot(),
     BlockUIHttpModule.forRoot(),
     AppRoutingModule

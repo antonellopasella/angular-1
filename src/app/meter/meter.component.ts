@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MeterModel } from '../_model/meter.model';
 import { ApiService } from '../_service/api.service';
 
@@ -8,9 +9,10 @@ import { ApiService } from '../_service/api.service';
 })
 export class MeterComponent implements OnInit {
   meter:Partial<MeterModel> = {};
-  constructor (private apiService: ApiService) {}
+  constructor (private apiService: ApiService, private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
-    this.apiService.getDevicesMeMeter('372')
-      .subscribe( r => this.meter = r);
+    this.activatedRoute.data.subscribe(({ devicesMeMeters }) => {
+      console.log(devicesMeMeters);
+    })
   }
 }

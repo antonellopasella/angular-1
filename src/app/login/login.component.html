@@ -8,7 +8,7 @@ login
   [disabled]="pending"
         required />
   <br>
-  <button [disabled]="loginForm.invalid || pending"
+  <button class="btn" [disabled]="loginForm.invalid || pending"
         (click)="login()">Login</button>
 </form>
 

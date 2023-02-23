@@ -1,9 +1,19 @@
 <h1>home</h1>
-<ul>
-  <li *ngFor="let meter of meters"
-  [routerLink]="['/meter/' + meter.id]">
-    {{ meter.id}}
-    <img [src]="'https://tst-nexmeterup.cloud.apeironlab.tech/api/attachments/' + meter.imageFilename +'?inline=true'" width="50">
+<div class="row row-cols-3 row-cols-md-6 g-4">
+  <div class="col"
+  *ngFor="let meter of meters">
+    <div class="card" style="height:200px">
+      <img
+          height="130"
+          class="card-img-top"
+          [src]="'https://tst-nexmeterup.cloud.apeironlab.tech/api/attachments/' + meter.imageFilename +'?inline=true'" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ meter.id}}</h5>
 
-  </li>
-</ul>
+        <p class="card-text"> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
