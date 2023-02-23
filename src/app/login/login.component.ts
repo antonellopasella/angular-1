@@ -23,6 +23,9 @@ export class LoginComponent {
             .login(this.jsonIn)
             .subscribe( () => {
               this.router.navigateByUrl('/home');
+            }, () => {
+              // se ho errore, riattivo
+              this.pending = false;
             });
 
   }

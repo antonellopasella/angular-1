@@ -15,6 +15,15 @@ export class ApiService {
     }
   }
 
+  getAuthorizationToken() {
+    return this.token;
+  }
+
+  logout() {
+    this.token = '';
+    localStorage.removeItem('token');
+  }
+
   login(jsonIn: LoginModel) {
     const h = {
       'X-APIKEY': '98fdc3dee6759703e7afa7977e243874',
@@ -31,23 +40,17 @@ export class ApiService {
   }
 
   getDevicesMeMeters() {
-
-    const h = {
-      'Authorization': 'Bearer ' + this.token,
-    };
-    return this.http.get("/api/devices/me/meters", {
-      headers: h
-    }).pipe(map((response: any) => {
-      return response.meters as MeterModel[];
+    return this.http.get("/api/devices/me/meters")
+      .pipe(map((response: any) => {
+        return response.meters as MeterModel[];
     }));
   }
 
   getDevicesMeMeter(id: string) {
-    const h = { 'Authorization': 'Bearer ' + this.token, };
-    return this.http.get("/api/devices/me/meters/" + id, { headers: h })
-              .pipe(map((response: any) => {
-                return response as MeterModel;
-            })) };
+    return this.http.get("/api/devices/me/meters/" + id)
+      .pipe(map((response: any) => {
+        return response as MeterModel;
+    })) };
 
 
 

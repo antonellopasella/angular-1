@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { ApiService } from './_service/api.service';
 import { MeterComponent } from './meter/meter.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TokenInterceptor } from './_interceptor/token.interceptor';
+import { ErrorInterceptor } from './_interceptor/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BlockUIHttpModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [ApiService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
