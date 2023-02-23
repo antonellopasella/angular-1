@@ -1,2 +1,9 @@
-home
-<a [routerLink]="['/login']">Login</a>
+<h1>home</h1>
+<ul>
+  <li *ngFor="let meter of meters"
+  [routerLink]="['/meter/' + meter.id]">
+    {{ meter.id}}
+    <img [src]="'https://tst-nexmeterup.cloud.apeironlab.tech/api/attachments/' + meter.imageFilename +'?inline=true'" width="50">
+
+  </li>
+</ul>
