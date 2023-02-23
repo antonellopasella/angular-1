@@ -4,17 +4,26 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MeterComponent } from './meter/meter.component';
 import { GetDevicesMeMetersResolver } from './_resolver/getDevicesMeMeters.resolver';
+import { GetDevicesMeMetersByIDResolver } from './_resolver/getDevicesMeMetersByID.resolver';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full' }, // redirect to `first-component`
 
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent,
-                  resolve: {
-                    devicesMeMeters: GetDevicesMeMetersResolver
-                  }
+  {
+    path: 'home',
+    component: HomeComponent,
+    resolve: {
+      devicesMeMeters: GetDevicesMeMetersResolver
+    }
   },
-  { path: 'meter/:id', component: MeterComponent },
+  {
+    path: 'meter/:id',
+    component: MeterComponent,
+    resolve: {
+      devicesMeMetersByID: GetDevicesMeMetersByIDResolver
+    }
+ },
 //   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 

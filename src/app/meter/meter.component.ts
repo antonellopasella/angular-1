@@ -9,10 +9,14 @@ import { ApiService } from '../_service/api.service';
 })
 export class MeterComponent implements OnInit {
   meter:Partial<MeterModel> = {};
+  inizio!: Date;
+
   constructor (private apiService: ApiService, private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ devicesMeMeters }) => {
-      console.log(devicesMeMeters);
+    this.activatedRoute.data.subscribe(({ devicesMeMetersByID }) => {
+      this.meter = devicesMeMetersByID;
+      this.inizio = new Date();
+      console.log('on init');
     })
   }
 }

@@ -1,2 +1,8 @@
 meter
-<h1>{{ meter.lastMeasure?.date }}</h1>
+<h1>{{ meter.id }}</h1>
+<h2>Data: {{ inizio }}</h2>
+<pre>
+  {{ meter | json }}
+</pre>
+
+<a routerLink="/meter/377">Collegato</a>
